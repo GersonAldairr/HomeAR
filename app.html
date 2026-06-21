@@ -6,12 +6,16 @@
     <title>HomeAR - Prototipo de Flujo Principal</title>
     
     <link rel="stylesheet" href="css/app-style.css">
-
 </head>
 <body>
 
     <div class="phone-container">
-        <header id="app-header">HomeAR</header>
+        <header>
+            <button id="back-button" class="btn-back" onclick="goBack()" aria-label="Volver a la pantalla anterior" style="display: none;">
+                &#8592;
+            </button>
+            <span id="app-header">HomeAR</span>
+        </header>
 
         <main id="home-screen" class="screen active" aria-label="Pantalla de Inicio">
             <div class="welcome-card">
@@ -89,20 +93,55 @@
     </div>
 
     <script>
+        // Declaración explícita del historial para evitar caídas de ejecución
+        let navigationHistory = [];
+
         function navigateTo(screenId, headerTitle) {
-            // Ocultar todas las pantallas activas
+            const currentActiveScreen = document.querySelector('.screen.active');
+            
+            if (currentActiveScreen && currentActiveScreen.id !== screenId) {
+                navigationHistory.push(currentActiveScreen.id);
+            }
+
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
             });
 
-            // Activar la pantalla seleccionada
             const targetScreen = document.getElementById(screenId);
             if (targetScreen) {
                 targetScreen.classList.add('active');
             }
 
-            // Actualizar dinámicamente el título del encabezado
             document.getElementById('app-header').innerText = headerTitle;
+
+            const backButton = document.getElementById('back-button');
+            if (screenId === 'home-screen') {
+                navigationHistory = []; 
+                backButton.style.display = 'none';
+            } else {
+                backButton.style.display = 'block';
+            }
+        }
+
+        function goBack() {
+            if (navigationHistory.length > 0) {
+                const previousScreenId = navigationHistory.pop();
+                let dynamicTitle = 'HomeAR';
+
+                if (previousScreenId === 'scan-screen') dynamicTitle = 'Escáner AR en Tiempo Real';
+                if (previousScreenId === 'details-screen') dynamicTitle = 'Detalles de la Inspección';
+
+                document.querySelectorAll('.screen').forEach(screen => {
+                    screen.classList.remove('active');
+                });
+
+                document.getElementById(previousScreenId).classList.add('active');
+                document.getElementById('app-header').innerText = dynamicTitle;
+
+                if (previousScreenId === 'home-screen') {
+                    document.getElementById('back-button').style.display = 'none';
+                }
+            }
         }
     </script>
 </body>
