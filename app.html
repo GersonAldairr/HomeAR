@@ -1,322 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeAR - Core Flow Prototype</title>
-    <style>
-        :root {
-            --primary-color: #052C4A; /* Azul Marino Profundo de la Startup */
-            --secondary-color: #00875A;
-            --danger-color: #DE350B;
-            --warning-color: #FFAB00;
-            --background-color: #F4F5F7;
-            --text-dark: #172B4D;
-            --text-light: #FFFFFF;
-        }
+    <title>HomeAR - Prototipo de Flujo Principal</title>
+    
+    <link rel="stylesheet" href="style.css">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-dark);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        /* Mobile Device Container Simulation */
-        .phone-container {
-            width: 375px;
-            height: 812px;
-            background-color: #FFFFFF;
-            border: 8px solid #333;
-            border-radius: 40px;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        /* Header Style */
-        header {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 20px 15px 15px 15px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        /* Screen Layout Control */
-        .screen {
-            display: none;
-            flex: 1;
-            flex-direction: column;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .screen.active {
-            display: flex;
-        }
-
-        /* Utility Components */
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            font-weight: bold;
-            text-align: center;
-            width: 100%;
-            margin-top: 15px;
-            transition: background 0.2s;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        /* Home Screen UI */
-        .welcome-card {
-            background: linear-gradient(135deg, #052C4A, #0a4d80);
-            color: var(--text-light);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .stat-box {
-            background-color: #F4F5F7;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .stat-box span {
-            display: block;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-        }
-
-        /* AR Scan Screen UI (Mockup Camera) */
-        .camera-viewport {
-            flex: 1;
-            background-color: #222;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 15px;
-        }
-
-        /* Simulation of Brick Wall and AR Bounding Boxes */
-        .ar-wall-mockup {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, transparent 20%, #222 70%), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400') center/cover;
-            opacity: 0.6;
-            z-index: 1;
-        }
-
-        .ar-overlay {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .ar-bounding-box {
-            border: 3px dashed var(--danger-color);
-            background-color: rgba(222, 53, 11, 0.2);
-            padding: 10px;
-            border-radius: 5px;
-            color: var(--text-light);
-            font-weight: bold;
-            font-size: 0.8rem;
-            text-shadow: 1px 1px 2px #000;
-            margin-top: 40px;
-        }
-
-        .ar-status-badge {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: var(--text-light);
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            align-self: center;
-            text-align: center;
-        }
-
-        /* Inspection Details UI (HU-07 / HU-07 Alignment) */
-        .risk-banner {
-            background-color: rgba(222, 53, 11, 0.1);
-            border: 2px solid var(--danger-color);
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .risk-badge {
-            background-color: var(--danger-color);
-            color: var(--text-light);
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .pathology-list {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .pathology-item {
-            background-color: #FFF;
-            border: 1px solid #DDD;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            border-left: 5px solid var(--warning-color);
-        }
-
-        .pathology-item.high-severity {
-            border-left-color: var(--danger-color);
-        }
-
-        .pathology-header {
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-    </style>
 </head>
 <body>
 
     <div class="phone-container">
         <header id="app-header">HomeAR</header>
 
-        <main id="home-screen" class="screen active" aria-label="Home Screen">
+        <main id="home-screen" class="screen active" aria-label="Pantalla de Inicio">
             <div class="welcome-card">
-                <h2>Welcome back, Inspector</h2>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">Ready to evaluate structural safety?</p>
+                <h2>Bienvenido, Inspector</h2>
+                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">¿Listo para evaluar la seguridad estructural?</p>
             </div>
 
-            <h3>Project Summary</h3>
+            <h3>Resumen del Proyecto</h3>
             <div class="stats-grid">
                 <div class="stat-box">
-                    <span>12</span> Completed
+                    <span>12</span> Completados
                 </div>
                 <div class="stat-box">
-                    <span>2</span> High Risk
+                    <span>2</span> Riesgo Alto
                 </div>
             </div>
 
             <div style="flex: 1;"></div>
-            <button class="btn-primary" onclick="navigateTo('scan-screen', 'AR Real-Time Scanner')" aria-label="Start AR Structural Scan">
-                Start New Scan
+            <button class="btn-primary" onclick="navigateTo('scan-screen', 'Escáner AR en Tiempo Real')" aria-label="Iniciar Escaneo de Estructura con Realidad Aumentada">
+                Iniciar Nuevo Escaneo
             </button>
         </main>
 
-        <main id="scan-screen" class="screen" aria-label="AR Scanner Screen">
+        <main id="scan-screen" class="screen" aria-label="Pantalla del Escáner AR">
             <div class="camera-viewport">
                 <div class="ar-wall-mockup"></div>
                 <div class="ar-overlay">
                     <div class="ar-status-badge" role="status" aria-live="polite">
-                        Align the camera with the brick wall
+                        Alinee la cámara con el muro de ladrillos
                     </div>
                     
                     <div class="ar-bounding-box">
-                        ⚠️ Defective Mortar Joint Detected
+                        ⚠️ Junta de Mortero Defectuosa Detectada
                     </div>
 
-                    <button class="btn-primary" onclick="navigateTo('details-screen', 'Inspection Details')" aria-label="Analyze scan results">
-                        Analyze Structure
+                    <button class="btn-primary" onclick="navigateTo('details-screen', 'Detalles de la Inspección')" aria-label="Analizar resultados del escaneo">
+                        Analizar Estructura
                     </button>
                 </div>
             </div>
         </main>
 
-        <main id="details-screen" class="screen" aria-label="Inspection Details Report Screen">
+        <main id="details-screen" class="screen" aria-label="Pantalla de Reporte Detallado de Inspección">
             <div class="risk-banner">
-                <div class="risk-badge" role="text">HIGH RISK</div>
+                <div class="risk-badge" role="text">RIESGO ALTO</div>
                 <div>
-                    <strong style="display:block;">Structural Alert</strong>
-                    <span style="font-size:0.85rem; color:#555;">Critical seismic vulnerability.</span>
+                    <strong style="display:block;">Alerta Estructural</strong>
+                    <span style="font-size:0.85rem; color:#555;">Vulnerabilidad sísmica crítica en la zona.</span>
                 </div>
             </div>
 
-            <h3>Detected Pathologies</h3>
+            <h3>Patologías Detectadas</h3>
             <ul class="pathology-list">
                 <li class="pathology-item high-severity">
                     <div class="pathology-header">
-                        <span>Incorrect Brick Alignment</span>
-                        <span style="color: var(--danger-color);">Critical</span>
+                        <span>Alineación Incorrecta de Ladrillos</span>
+                        <span style="color: var(--danger-color);">Crítico</span>
                     </div>
-                    <p style="font-size: 0.85rem; color: #555;">The vertical joints do not maintain the alternating pattern required by standard regulations.</p>
+                    <p style="font-size: 0.85rem; color: #555;">Las juntas verticales no respetan el patrón alternado exigido por la norma técnica de edificación.</p>
                 </li>
                 <li class="pathology-item">
                     <div class="pathology-header">
-                        <span>Insufficient Mortar Thickness</span>
-                        <span style="color: var(--warning-color);">Medium</span>
+                        <span>Espesor de Mortero Insuficiente</span>
+                        <span style="color: var(--warning-color);">Medio</span>
                     </div>
-                    <p style="font-size: 0.85rem; color: #555;">Horizontal joints have a thickness of less than 9mm, reducing adhesion.</p>
+                    <p style="font-size: 0.85rem; color: #555;">Las juntas horizontales presentan un espesor menor a 9mm, reduciendo la adherencia del muro.</p>
                 </li>
             </ul>
 
             <div style="flex: 1;"></div>
-            <button class="btn-primary" onclick="navigateTo('home-screen', 'HomeAR')" aria-label="Save report and return to dashboard">
-                Save & Finish Report
+            <button class="btn-primary" onclick="navigateTo('home-screen', 'HomeAR')" aria-label="Guardar reporte y regresar al panel de inicio">
+                Guardar y Finalizar Reporte
             </button>
         </main>
     </div>
 
     <script>
         function navigateTo(screenId, headerTitle) {
-            // Hide all active screens
+            // Ocultar todas las pantallas activas
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
             });
 
-            // Activate the targeted screen
+            // Activar la pantalla seleccionada
             const targetScreen = document.getElementById(screenId);
             if (targetScreen) {
                 targetScreen.classList.add('active');
             }
 
-            // Dynamically update the header text
+            // Actualizar dinámicamente el título del encabezado
             document.getElementById('app-header').innerText = headerTitle;
         }
     </script>
