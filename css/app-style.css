@@ -1,234 +1,43 @@
-:root {
-    --primary-color: #052C4A;
-    --secondary-color: #00875A;
-    --danger-color: #DE350B;
-    --warning-color: #FFAB00;
-    --background-color: #F4F5F7;
-    --text-dark: #172B4D;
-    --text-light: #FFFFFF;
-}
+:root { --primary-blue: #052C4A; --accent-green: #27C18F; }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+body { background: #e0e0e0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
 
-body {
-    background-color: var(--background-color);
-    color: var(--text-dark);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
+.phone-container { width: 375px; height: 812px; background: white; border-radius: 40px; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+.screen { display: none; width: 100%; height: 100%; flex-direction: column; background: white; }
+.screen.active { display: flex; }
 
-.phone-container {
-    width: 375px;
-    height: 812px;
-    background-color: #FFFFFF;
-    border: 8px solid #333;
-    border-radius: 40px;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
+/* Header */
+header { background: var(--primary-blue); color: white; height: 64px; display: flex; align-items: center; padding: 0 20px; font-weight: 700; }
+.btn-back { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; margin-right: 15px; }
 
-/* HEADER UNIFICADO Y CORREGIDO */
-header {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    padding: 20px 15px 15px 15px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: relative; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 60px;
-}
+/* Prepara Escaneo */
+.scan-mockup-wrapper { position: relative; width: 280px; height: 380px; margin: 30px auto; }
+.iphone-frame { width: 100%; height: 100%; position: absolute; z-index: 2; }
+.scan-content { width: 85%; height: 88%; border-radius: 30px; object-fit: cover; z-index: 1; margin: 20px 0 0 20px; }
+.focus-icon { position: absolute; width: 60px; z-index: 3; top: 40%; left: 40%; }
+.instruction-title { text-align: left; color: var(--primary-blue); margin: 20px 20px 10px 20px; font-size: 1.5rem; }
+.instruction-list { text-align: left; padding: 0 20px 0 40px; color: var(--primary-blue); margin-bottom: 30px; line-height: 1.6; }
+.btn-start { background: var(--primary-blue); color: white; padding: 18px; margin: 0 20px; border-radius: 16px; text-align: center; font-weight: 700; cursor: pointer; }
 
-.btn-back {
-    position: absolute;
-    left: 20px;
-    background: none;
-    border: none;
-    color: var(--text-light);
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.2s ease;
-}
+/* Escaneo AR */
+#scan-screen { background-color: #000; }
+.ar-viewport-container { width: 100%; height: 65%; position: relative; background: #000; }
+.ar-camera-feed { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ar-grid-focus { position: absolute; width: 200px; top: 120px; left: 85px; }
+.ar-label-status { position: absolute; bottom: 20px; left: 20px; background: rgba(30, 30, 30, 0.8); color: white; padding: 10px 20px; border-radius: 20px; font-size: 0.9rem; }
+.ar-bottom-area { height: 35%; background-color: #000; display: flex; justify-content: center; align-items: center; }
+.ar-bottom-controls { width: 250px; cursor: pointer; }
 
-.btn-back:hover {
-    opacity: 0.7;
-}
-
-.screen {
-    display: none;
-    flex: 1;
-    flex-direction: column;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.screen.active {
-    display: flex;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    margin-top: 15px;
-    transition: background 0.2s;
-}
-
-.btn-primary:hover {
-    opacity: 0.9;
-}
-
-.welcome-card {
-    background: linear-gradient(135deg, #052C4A, #0a4d80);
-    color: var(--text-light);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.stat-box {
-    background-color: #F4F5F7;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    border-left: 4px solid var(--primary-color);
-}
-
-.stat-box span {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.camera-viewport {
-    flex: 1;
-    background-color: #222;
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-.ar-wall-mockup {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, transparent 20%, #222 70%), url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=400') center/cover;
-    opacity: 0.6;
-    z-index: 1;
-}
-
-.ar-overlay {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.ar-bounding-box {
-    border: 3px dashed var(--danger-color);
-    background-color: rgba(222, 53, 11, 0.2);
-    padding: 10px;
-    border-radius: 5px;
-    color: var(--text-light);
-    font-weight: bold;
-    font-size: 0.8rem;
-    text-shadow: 1px 1px 2px #000;
-    margin-top: 40px;
-}
-
-.ar-status-badge {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: var(--text-light);
-    padding: 8px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    align-self: center;
-    text-align: center;
-}
-
-.risk-banner {
-    background-color: rgba(222, 53, 11, 0.1);
-    border: 2px solid var(--danger-color);
-    padding: 15px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.risk-badge {
-    background-color: var(--danger-color);
-    color: var(--text-light);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 0.9rem;
-}
-
-.pathology-list {
-    list-style: none;
-    margin-top: 10px;
-}
-
-.pathology-item {
-    background-color: #FFF;
-    border: 1px solid #DDD;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    border-left: 5px solid var(--warning-color);
-}
-
-.pathology-item.high-severity {
-    border-left-color: var(--danger-color);
-}
-
-.pathology-header {
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
+/* Procesando y Detalles */
+#processing-screen { justify-content: center; align-items: center; }
+.spinner-ring { width: 150px; animation: rotateRing 1.5s linear infinite; }
+@keyframes rotateRing { to { transform: rotate(360deg); } }
+.progress-container { width: 280px; height: 12px; background: #E2E8F0; border-radius: 10px; margin-top: 30px; }
+.progress-bar-fill { height: 100%; width: 0%; background-color: var(--accent-green); border-radius: 10px; animation: fillBar 2.5s ease-in-out forwards; }
+@keyframes fillBar { to { width: 100%; } }
+.faults-container { padding: 20px; }
+.fault-item { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; padding: 12px; border-radius: 16px; border: 1px solid #E2E8F0; }
+.fault-thumb { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; }
+.badge.red { color: #DE350B; font-weight: bold; font-size: 0.8rem; }
+.btn-continue { width: 90%; margin: 20px auto; cursor: pointer; display: block; }

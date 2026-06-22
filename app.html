@@ -2,147 +2,90 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HomeAR - Prototipo de Flujo Principal</title>
-    
+    <title>HomeAR - Flujo de Inspección</title>
     <link rel="stylesheet" href="css/app-style.css">
 </head>
 <body>
 
     <div class="phone-container">
-        <header>
-            <button id="back-button" class="btn-back" onclick="goBack()" aria-label="Volver a la pantalla anterior" style="display: none;">
-                &#8592;
-            </button>
-            <span id="app-header">HomeAR</span>
-        </header>
-
-        <main id="home-screen" class="screen active" aria-label="Pantalla de Inicio">
-            <div class="welcome-card">
-                <h2>Bienvenido, Inspector</h2>
-                <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 5px;">¿Listo para evaluar la seguridad estructural?</p>
+        <main id="prepare-screen" class="screen active">
+            <header>
+                <button class="btn-back" onclick="goBack()">&#8592;</button>
+                <span>Preparar Escaneo</span>
+            </header>
+            <div class="scan-mockup-wrapper">
+                <img src="img/cbi_apple-iphone.png" class="iphone-frame">
+                <img src="img/image 7.png" class="scan-content">
+                <img src="img/et_focus.png" class="focus-icon">
             </div>
-
-            <h3>Resumen del Proyecto</h3>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <span>12</span> Completados
-                </div>
-                <div class="stat-box">
-                    <span>2</span> Riesgo Alto
-                </div>
-            </div>
-
-            <div style="flex: 1;"></div>
-            <button class="btn-primary" onclick="navigateTo('scan-screen', 'Escáner AR en Tiempo Real')" aria-label="Iniciar Escaneo de Estructura con Realidad Aumentada">
-                Iniciar Nuevo Escaneo
-            </button>
-        </main>
-
-        <main id="scan-screen" class="screen" aria-label="Pantalla del Escáner AR">
-            <div class="camera-viewport">
-                <div class="ar-wall-mockup"></div>
-                <div class="ar-overlay">
-                    <div class="ar-status-badge" role="status" aria-live="polite">
-                        Alinee la cámara con el muro de ladrillos
-                    </div>
-                    
-                    <div class="ar-bounding-box">
-                        ⚠️ Junta de Mortero Defectuosa Detectada
-                    </div>
-
-                    <button class="btn-primary" onclick="navigateTo('details-screen', 'Detalles de la Inspección')" aria-label="Analizar resultados del escaneo">
-                        Analizar Estructura
-                    </button>
-                </div>
-            </div>
-        </main>
-
-        <main id="details-screen" class="screen" aria-label="Pantalla de Reporte Detallado de Inspección">
-            <div class="risk-banner">
-                <div class="risk-badge" role="text">RIESGO ALTO</div>
-                <div>
-                    <strong style="display:block;">Alerta Estructural</strong>
-                    <span style="font-size:0.85rem; color:#555;">Vulnerabilidad sísmica crítica en la zona.</span>
-                </div>
-            </div>
-
-            <h3>Patologías Detectadas</h3>
-            <ul class="pathology-list">
-                <li class="pathology-item high-severity">
-                    <div class="pathology-header">
-                        <span>Alineación Incorrecta de Ladrillos</span>
-                        <span style="color: var(--danger-color);">Crítico</span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: #555;">Las juntas verticales no respetan el patrón alternado exigido por la norma técnica de edificación.</p>
-                </li>
-                <li class="pathology-item">
-                    <div class="pathology-header">
-                        <span>Espesor de Mortero Insuficiente</span>
-                        <span style="color: var(--warning-color);">Medio</span>
-                    </div>
-                    <p style="font-size: 0.85rem; color: #555;">Las juntas horizontales presentan un espesor menor a 9mm, reduciendo la adherencia del muro.</p>
-                </li>
+            <h1 class="instruction-title">Prepara el escaneo</h1>
+            <ul class="instruction-list">
+                <li>Asegurate de tener buena luz</li>
+                <li>Manten tu camara estable</li>
+                <li>Escanea superficies planas y por secciones</li>
             </ul>
+            <div class="btn-start" onclick="navigateTo('scan-screen', 'Escáner AR')">Comenzar escaneo</div>
+        </main>
 
-            <div style="flex: 1;"></div>
-            <button class="btn-primary" onclick="navigateTo('home-screen', 'HomeAR')" aria-label="Guardar reporte y regresar al panel de inicio">
-                Guardar y Finalizar Reporte
-            </button>
+        <main id="scan-screen" class="screen">
+            <header>
+                <button class="btn-back" onclick="navigateTo('prepare-screen', 'Preparar Escaneo')">&#8592;</button>
+                <span>Escáner AR</span>
+            </header>
+            <div class="ar-viewport-container">
+                <img src="img/CamPreview.png" class="ar-camera-feed">
+                <img src="img/Grid.png" class="ar-grid-focus">
+                <div class="ar-label-status">Apunta a la superficie</div>
+            </div>
+            <div class="ar-bottom-area">
+                <img src="img/BottomControls.png" class="ar-bottom-controls" onclick="navigateTo('processing-screen', 'Analizando...')">
+            </div>
+        </main>
+
+        <main id="processing-screen" class="screen">
+            <img src="img/svg-spinners_180-ring-with-bg.png" class="spinner-ring">
+            <h2 class="proc-title">Analizando...</h2>
+            <p class="proc-subtitle">Esto puede tomar unos segundos</p>
+            <div class="progress-container"><div class="progress-bar-fill"></div></div>
+        </main>
+
+        <main id="faults-screen" class="screen">
+            <header>
+                <button class="btn-back" onclick="navigateTo('processing-screen', 'Analizando...')">&#8592;</button>
+                <span>Detalles de fallas</span>
+            </header>
+            <div class="faults-container">
+                <div class="fault-item">
+                    <img src="img/AceroExpuesto.png" class="fault-thumb">
+                    <div class="fault-info">
+                        <h3>Acero expuesto</h3>
+                        <p>Varilla expuesta con corrosión</p>
+                        <span class="badge red">Alto</span>
+                    </div>
+                </div>
+                <div class="fault-item">
+                    <img src="img/CamPreview.png" class="fault-thumb">
+                    <div class="fault-info">
+                        <h3>Deficiencia en juntas</h3>
+                        <p>Juntas vacías en bloques</p>
+                        <span class="badge red">Alto</span>
+                    </div>
+                </div>
+            </div>
+            <img src="img/Group 2 (1).png" class="btn-continue" onclick="navigateTo('home-screen', 'HomeAR')">
         </main>
     </div>
 
     <script>
-        // Declaración explícita del historial para evitar caídas de ejecución
-        let navigationHistory = [];
-
         function navigateTo(screenId, headerTitle) {
-            const currentActiveScreen = document.querySelector('.screen.active');
-            
-            if (currentActiveScreen && currentActiveScreen.id !== screenId) {
-                navigationHistory.push(currentActiveScreen.id);
-            }
-
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-
-            const targetScreen = document.getElementById(screenId);
-            if (targetScreen) {
-                targetScreen.classList.add('active');
-            }
-
-            document.getElementById('app-header').innerText = headerTitle;
-
-            const backButton = document.getElementById('back-button');
-            if (screenId === 'home-screen') {
-                navigationHistory = []; 
-                backButton.style.display = 'none';
-            } else {
-                backButton.style.display = 'block';
-            }
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
         }
+        function goBack() { navigateTo('prepare-screen', 'Preparar Escaneo'); }
 
-        function goBack() {
-            if (navigationHistory.length > 0) {
-                const previousScreenId = navigationHistory.pop();
-                let dynamicTitle = 'HomeAR';
-
-                if (previousScreenId === 'scan-screen') dynamicTitle = 'Escáner AR en Tiempo Real';
-                if (previousScreenId === 'details-screen') dynamicTitle = 'Detalles de la Inspección';
-
-                document.querySelectorAll('.screen').forEach(screen => {
-                    screen.classList.remove('active');
-                });
-
-                document.getElementById(previousScreenId).classList.add('active');
-                document.getElementById('app-header').innerText = dynamicTitle;
-
-                if (previousScreenId === 'home-screen') {
-                    document.getElementById('back-button').style.display = 'none';
-                }
-            }
-        }
+        document.querySelector('.progress-bar-fill')?.addEventListener('animationend', () => {
+            setTimeout(() => navigateTo('faults-screen', 'Detalles de fallas'), 300);
+        });
     </script>
 </body>
 </html>
