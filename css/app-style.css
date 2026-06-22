@@ -1,0 +1,43 @@
+:root { --primary-blue: #052C4A; --accent-green: #27C18F; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: sans-serif; }
+body { background: #e0e0e0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+
+.phone-container { width: 375px; height: 812px; background: white; border-radius: 40px; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+.screen { display: none; width: 100%; height: 100%; flex-direction: column; background: white; }
+.screen.active { display: flex; }
+
+/* Header */
+header { background: var(--primary-blue); color: white; height: 64px; display: flex; align-items: center; padding: 0 20px; font-weight: 700; }
+.btn-back { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; margin-right: 15px; }
+
+/* Prepara Escaneo */
+.scan-mockup-wrapper { position: relative; width: 280px; height: 380px; margin: 30px auto; }
+.iphone-frame { width: 100%; height: 100%; position: absolute; z-index: 2; }
+.scan-content { width: 85%; height: 88%; border-radius: 30px; object-fit: cover; z-index: 1; margin: 20px 0 0 20px; }
+.focus-icon { position: absolute; width: 60px; z-index: 3; top: 40%; left: 40%; }
+.instruction-title { text-align: left; color: var(--primary-blue); margin: 20px 20px 10px 20px; font-size: 1.5rem; }
+.instruction-list { text-align: left; padding: 0 20px 0 40px; color: var(--primary-blue); margin-bottom: 30px; line-height: 1.6; }
+.btn-start { background: var(--primary-blue); color: white; padding: 18px; margin: 0 20px; border-radius: 16px; text-align: center; font-weight: 700; cursor: pointer; }
+
+/* Escaneo AR */
+#scan-screen { background-color: #000; }
+.ar-viewport-container { width: 100%; height: 65%; position: relative; background: #000; }
+.ar-camera-feed { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ar-grid-focus { position: absolute; width: 200px; top: 120px; left: 85px; }
+.ar-label-status { position: absolute; bottom: 20px; left: 20px; background: rgba(30, 30, 30, 0.8); color: white; padding: 10px 20px; border-radius: 20px; font-size: 0.9rem; }
+.ar-bottom-area { height: 35%; background-color: #000; display: flex; justify-content: center; align-items: center; }
+.ar-bottom-controls { width: 250px; cursor: pointer; }
+
+/* Procesando y Detalles */
+#processing-screen { justify-content: center; align-items: center; }
+.spinner-ring { width: 150px; animation: rotateRing 1.5s linear infinite; }
+@keyframes rotateRing { to { transform: rotate(360deg); } }
+.progress-container { width: 280px; height: 12px; background: #E2E8F0; border-radius: 10px; margin-top: 30px; }
+.progress-bar-fill { height: 100%; width: 0%; background-color: var(--accent-green); border-radius: 10px; animation: fillBar 2.5s ease-in-out forwards; }
+@keyframes fillBar { to { width: 100%; } }
+.faults-container { padding: 20px; }
+.fault-item { display: flex; gap: 15px; align-items: center; margin-bottom: 20px; padding: 12px; border-radius: 16px; border: 1px solid #E2E8F0; }
+.fault-thumb { width: 80px; height: 80px; border-radius: 12px; object-fit: cover; }
+.badge.red { color: #DE350B; font-weight: bold; font-size: 0.8rem; }
+.btn-continue { width: 90%; margin: 20px auto; cursor: pointer; display: block; }
