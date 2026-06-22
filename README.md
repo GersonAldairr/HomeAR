@@ -9,6 +9,7 @@ Creado con Visual Studio Code, HomeAR es una plataforma digital orientada a mejo
 * Geronimo Puma Kevin Joel - u202423163
 * Allcca Rodriguez Romina Jarumi - u20241d978
 * Díaz Ramírez Alejandro - u202423084
+* Lino Quispe Leonardo Miguel - u202422298
 
 ## Segmentos Objetivo
 
