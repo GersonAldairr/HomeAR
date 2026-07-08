@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container center">
+        <a href="#" class="back">&#8592;</a>
+
+        <div class="icon-mail">✉</div>
+
+        <h1>Verificación de correo</h1>
+
+        <p class="subtitle">Hemos enviado un código de verificación a <strong>ejemplo@correo.com</strong></p>
+
+        <div class="code">
+            <input type="text" maxlength="1" inputmode="numeric">
+            <input type="text" maxlength="1" inputmode="numeric">
+            <input type="text" maxlength="1" inputmode="numeric">
+            <input type="text" maxlength="1" inputmode="numeric">
+        </div>
+
+        <p id="error" class="error-message"></p>
+
+        <p class="small">¿No recibiste el código?</p>
+
+        <a href="#" class="link">Reenviar código (00:45)</a>
+
+    </div>
+    <script src="verify.js"></script>
+</body>
+</html>
