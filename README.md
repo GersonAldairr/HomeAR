@@ -2,7 +2,7 @@
 
 Creado con Visual Studio Code, HomeAR es una plataforma digital orientada a mejorar la seguridad en viviendas autoconstruidas mediante el uso de Realidad Aumentada. La aplicación permite identificar posibles errores estructurales durante el proceso de construcción, brindando información visual y recomendaciones preventivas para reducir riesgos y promover edificaciones más seguras.
 
-## Miembros del equipo
+## Miembros  del equipo
 
 * Gerson Aldair Alburqueque Campos  - u202520276
 * Huarcaya Barrientos Andree Jesus  - u202411131
