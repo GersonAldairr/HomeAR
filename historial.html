@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeAR - Historial de inspecciones</title>
+    <link rel="stylesheet" href="css/app-style.css">
+</head>
+<body>
+
+    <div class="phone-container">
+        <main class="screen active history-screen">
+            
+            <header class="transparent-header bg-white">
+                <button class="btn-back dark" onclick="location.href='home.html'">&#8592;</button>
+                <span class="dark-title">Historial de inspecciones</span>
+            </header>
+
+            <div class="history-content">
+                
+                <div class="history-card clickable" onclick="location.href='informe-tecnico.html'">
+                    <img src="img/HIconoCasa.png" alt="Icono Propiedad" class="history-thumb">
+                    <div class="history-info">
+                        <h3>Casa - Sala Principal</h3>
+                        <p>24 may 2024</p>
+                        <img src="img/Medio.png" alt="Riesgo Medio" class="history-badge">
+                    </div>
+                </div>
+
+                </div>
+
+            <nav class="bottom-nav">
+                <div class="nav-item" onclick="location.href='home.html'">
+                    <img src="img/cbi_tabbar-home.png" alt="Inicio">
+                    <span>Inicio</span>
+                </div>
+                <div class="nav-item active">
+                    <img src="img/grommet-icons_notes.png" alt="Inspecciones">
+                    <span>Inspecciones</span>
+                </div>
+                <div class="nav-item">
+                    <img src="img/iconamoon_profile.png" alt="Perfil">
+                    <span>Perfil</span>
+                </div>
+            </nav>
+            
+        </main>
+    </div>
+
+</body>
+</html>
