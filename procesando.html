@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeAR - Analizando</title>
+    <link rel="stylesheet" href="css/app-style.css">
+</head>
+<body>
+
+    <div class="phone-container">
+        <main id="processing-screen" class="screen active">
+            <img src="img/svg-spinners_180-ring-with-bg.png" class="spinner-ring">
+            <h2 class="proc-title">Analizando...</h2>
+            <p class="proc-subtitle">Esto puede tomar unos segundos</p>
+            <div class="progress-container">
+                <div class="progress-bar-fill"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        
+        document.querySelector('.progress-bar-fill').addEventListener('animationend', () => {
+            setTimeout(() => {
+                window.location.href = "resultado-analisis.html";
+            }, 300);
+        });
+    </script>
+</body>
+</html>
