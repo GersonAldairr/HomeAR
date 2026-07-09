@@ -1,210 +1,245 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HomeAR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeAR</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <img src="img/logo.png" class="logo" alt="HomeAR">
+    <header>
+        <nav class="navbar">
 
-        <ul>
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#caracteristicas">Características</a></li>
-            <li><a href="#faq">Preguntas frecuentes</a></li>
-        </ul>
+            <img src="img/logo.png" class="logo" alt="HomeAR">
 
-        <a href="#" class="btn-primary">Solicitar Diagnóstico</a>
-    </nav>
-</header>
+            <div class="hamburger" id="hamburger">
+                ☰
+            </div>
 
-<section class="hero">
+            <ul id="nav-menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#faq">Preguntas frecuentes</a></li>
+            </ul>
 
-    <div class="hero-content">
-        <h1>
-            Tu asistente técnico<br>
-            en obra con Realidad<br>
-            Aumentada
-        </h1>
+        </nav>
+    </header>
 
-        <p>
-            Detecta errores estructurales en tiempo real y protege
-            a tu familia de riesgos sísmicos.
-        </p>
+    <section class="hero">
 
-        <a href="#" class="btn-primary btn-large">
-            Solicitar Diagnóstico
-        </a>
-    </div>
+<div class="hero-content">
 
-    <div class="hero-image">
-        <img src="img/hero.png" alt="">
-    </div>
-
-</section>
-
-<section class="problem">
-
-    <div class="problem-left">
-        <h2>El Problema</h2>
-    </div>
-
-    <div class="problem-right">
-        <p>
-            Miles de viviendas en zonas periféricas se construyen
-            sin supervisión técnica.
-        </p>
-
-        <div class="problem-card">
-            Los errores en amarres y columnas son determinantes
-            durante sismos de alta intensidad.
-        </div>
-    </div>
-
-</section>
-
-<section id="caracteristicas" class="features">
-
-    <h2>Características de la Solución</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>Escaneo en Tiempo Real</h3>
-            <p>Identificación de fallas mediante bounding boxes visuales.</p>
-        </div>
-
-        <div class="card">
-            <h3>Guías Paso a Paso</h3>
-            <p>Instrucciones simples para personas sin conocimientos técnicos.</p>
-        </div>
-
-        <div class="card">
-            <h3>Modo Offline</h3>
-            <p>Funcionalidad total incluso en zonas de baja conectividad.</p>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="audience">
-
-    <div class="audience-card">
-        <span>FAMILIAS</span>
-
-        <h3>
-            Para Familias: Construcción progresiva segura y digna.
-        </h3>
-
-        <img src="img/familia.png">
-    </div>
-
-    <div class="audience-card">
-        <span>VOLUNTARIOS</span>
-
-        <h3>
-            Para Voluntarios: Herramienta digital para facilitar asesorías.
-        </h3>
-
-        <img src="img/voluntarios.png">
-    </div>
-
-</section>
-
-<section class="cta-cards">
-
-    <div class="cta-card bg1">
-        <h2>Para Familias Autoconstructoras</h2>
-
-        <p>
-            Construye con confianza usando realidad aumentada.
-        </p>
-
-        <button>Solicitar Diagnóstico</button>
-    </div>
-
-    <div class="cta-card bg2">
-        <h2>Para Estudiantes y Voluntarios</h2>
-
-        <p>
-            Participa y contribuye al desarrollo de soluciones AR.
-        </p>
-
-        <button>Unirse como Voluntario</button>
-    </div>
-
-</section>
-
-<section class="cta-final">
-
-    <h2>
-        Protege tu hogar con tecnología de vanguardia
-    </h2>
+    <h1>
+        Tu asistente técnico<br>
+        en obra con Realidad<br>
+        Aumentada
+    </h1>
 
     <p>
-        Únete a HomeAR para transformar la seguridad estructural.
+        Detecta errores estructurales en tiempo real y protege
+        a tu familia de riesgos sísmicos.
     </p>
 
-    <div class="buttons">
-        <button class="btn-primary">
-            Solicitar Diagnóstico
-        </button>
+    <a href="logIn.html" class="btn-primary btn-large">
+        Solicitar Diagnóstico
+    </a>
 
-        <button class="btn-secondary">
-            Unirse como Voluntario
-        </button>
-    </div>
+</div>
 
-</section>
+            <p>
+                Detecta errores estructurales en tiempo real y protege
+                a tu familia de riesgos sísmicos.
+            </p>
 
-<section id="faq" class="faq">
+            <a href="logIn.html" class="btn-primary btn-large">
+                Solicitar Diagnóstico
+            </a>
+        </div>
 
-    <h2>Preguntas frecuentes</h2>
+        <div class="hero-image">
+            <img src="img/hero.png" alt="">
+        </div>
 
-    <details open>
-        <summary>¿Qué es HomeAR?</summary>
+    </section>
+
+    <section class="problem">
+
+        <div class="problem-left">
+            <h2>El Problema</h2>
+        </div>
+
+        <div class="problem-right">
+            <p>
+                Miles de viviendas en zonas periféricas se construyen
+                sin supervisión técnica.
+            </p>
+
+            <div class="problem-card">
+                Los errores en amarres y columnas son determinantes
+                durante sismos de alta intensidad.
+            </div>
+        </div>
+
+    </section>
+
+    <section id="caracteristicas" class="features">
+
+        <h2>Características de la Solución</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Escaneo en Tiempo Real</h3>
+                <p>Identificación de fallas mediante bounding boxes visuales.</p>
+            </div>
+
+            <div class="card">
+                <h3>Guías Paso a Paso</h3>
+                <p>Instrucciones simples para personas sin conocimientos técnicos.</p>
+            </div>
+
+            <div class="card">
+                <h3>Modo Offline</h3>
+                <p>Funcionalidad total incluso en zonas de baja conectividad.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="audience">
+
+        <div class="audience-card">
+            <span>FAMILIAS</span>
+
+            <h3>
+                Para Familias: Construcción progresiva segura y digna.
+            </h3>
+
+            <img src="img/familia.png">
+        </div>
+
+        <div class="audience-card">
+            <span>VOLUNTARIOS</span>
+
+            <h3>
+                Para Voluntarios: Herramienta digital para facilitar asesorías.
+            </h3>
+
+            <img src="img/voluntarios.png">
+        </div>
+
+    </section>
+
+    <section class="cta-cards">
+
+        <div class="cta-card bg1">
+            <h2>Para Familias Autoconstructoras</h2>
+
+            <p>
+                Construye con confianza. Nuestra tecnología de Realidad Aumentada detecta fallas estructurales en tiempo real, asegurando que cada ladrillo y amarre cumpla con los estándares de seguridad sísmica más estrictos.
+            </p>
+
+            <button>Solicitar Diagnóstico</button>
+        </div>
+
+        <div class="cta-card bg2">
+            <h2>Para Estudiantes y Voluntarios</h2>
+
+            <p>
+                Únete a nuestra iniciativa técnica. Contribuye a la innovación en ingeniería y a la educación técnica en Perú. Estamos buscando ingenieros y estudiantes para colaborar en el desarrollo de soluciones AR para la seguridad de la vivienda.
+            </p>
+
+            <button>Unirse como Voluntario</button>
+        </div>
+
+    </section>
+
+    <section class="cta-final">
+
+        <h2>
+            Protege tu hogar con tecnología de vanguardia
+        </h2>
+
         <p>
-            Sistema que utiliza realidad aumentada para identificar errores estructurales.
+            Únete a HomeAR para transformar la seguridad estructural.
         </p>
-    </details>
 
-    <details>
-        <summary>¿Qué errores detecta?</summary>
-        <p>Columnas, amarres y otros elementos básicos.</p>
-    </details>
+        <div class="buttons">
+            <button class="btn-primary">
+                Solicitar Diagnóstico
+            </button>
 
-    <details>
-        <summary>¿Necesito internet?</summary>
-        <p>No, existe modo offline.</p>
-    </details>
+<div class="buttons">
+
+    <a href="logIn.html" class="btn-primary">
+        Solicitar Diagnóstico
+    </a>
+
+    <a href="logIn.html" class="btn-secondary">
+        Unirse como Voluntario
+    </a>
+
+</div>
 
 </section>
 
-<footer>
+    <section id="faq" class="faq">
 
-    <img src="img/logo.png" alt="">
+        <h2>Preguntas frecuentes</h2>
 
-    <div>
-        Av. Arequipa 150, Lima, Perú
-    </div>
+        <details open>
+            <summary>¿Qué es HomeAR?</summary>
+            <p>
+                Sistema que utiliza realidad aumentada para identificar errores estructurales.
+            </p>
+        </details>
 
-    <div>
-        contacto@homear.pe
-    </div>
+        <details>
+            <summary>¿Qué errores detecta?</summary>
+            <p>Columnas, amarres y otros elementos básicos.</p>
+        </details>
 
-    <div>
-        © 2026 HomeAR
-    </div>
+        <details>
+            <summary>¿Necesito internet?</summary>
+            <p>No, existe modo offline.</p>
+        </details>
 
-</footer>
+    </section>
 
+    <footer>
+
+        <img src="img/logo.png" alt="">
+
+        <div>
+            Av. Arequipa 150, Lima, Perú
+        </div>
+
+        <div>
+            contacto@homear.pe
+        </div>
+
+        <div>
+            © 2026 HomeAR
+        </div>
+
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById("hamburger");
+        const menu = document.getElementById("nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            menu.classList.toggle("active");
+        });
+    </script>
 </body>
 </html>
