@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeAR - Inicio</title>
+    <link rel="stylesheet" href="css/app-style.css">
+</head>
+<body>
+
+    <div class="phone-container">
+        <main class="screen active home-screen">
+            
+            <header class="transparent-header">
+                <button class="btn-back dark" onclick="history.back()">&#8592;</button>
+            </header>
+
+            <div class="home-content">
+                <div class="greeting-section">
+                    <h1>Hola, Juan</h1>
+                    <p>¿Que deseas hacer hoy?</p>
+                </div>
+
+                <div class="main-action-card" onclick="location.href='preparar-escaneo.html'">
+                    <div class="card-text">
+                        <h2>Detectar fallas estructurales</h2>
+                        <p>Escaneo y analiza tu vivienda</p>
+                    </div>
+                    <img src="img/lucide_house.png" alt="Icono Casa" class="card-icon">
+                </div>
+
+                <div class="secondary-actions">
+                    <div class="sec-card">
+                        <h3>Historial de<br>Inspecciones</h3>
+                    </div>
+                    <div class="sec-card">
+                        <h3>Consejos de<br>seguridad</h3>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="bottom-nav">
+                <div class="nav-item active">
+                    <img src="img/cbi_tabbar-home.png" alt="Inicio">
+                    <span>Inicio</span>
+                </div>
+                <div class="nav-item" onclick="location.href='historial.html'">
+                    <img src="img/grommet-icons_notes.png" alt="Inspecciones">
+                    <span>Inspecciones</span>
+                </div>
+                <div class="nav-item">
+                    <img src="img/iconamoon_profile.png" alt="Perfil">
+                    <span>Perfil</span>
+                </div>
+            </nav>
+
+        </main>
+    </div>
+
+</body>
+</html>

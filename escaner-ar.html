@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeAR - Escáner AR</title>
+    <link rel="stylesheet" href="css/app-style.css">
+</head>
+<body>
+
+    <div class="phone-container">
+        <main id="scan-screen" class="screen active">
+            <header>
+                <button class="btn-back" onclick="location.href='preparar-escaneo.html'">&#8592;</button>
+                <span>Escáner AR</span>
+            </header>
+
+            <div class="ar-viewport-container">
+                <img src="img/CamPreview.png" class="ar-camera-feed">
+                <img src="img/Grid.png" class="ar-grid-focus">
+                <div class="ar-label-status">Apunta a la superficie</div>
+            </div>
+
+            <div class="ar-bottom-area">
+                <img src="img/BottomControls.png" class="ar-bottom-controls" alt="Capturar" onclick="location.href='procesando.html'">
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
