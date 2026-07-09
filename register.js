@@ -29,6 +29,6 @@ btn.addEventListener("click", function(e){
 
     error.textContent = "";
 
-    window.location.href = "verification.html";
+    window.location.href = "splash.html";
 
 });
