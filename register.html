@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+
+    <link rel="stylesheet" href="css/auth.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <a href="#" class="back">&#8592;</a>
+
+        <h1>Crear cuenta</h1>
+
+        <label>Nombre</label>
+        <input type="text" id="nombre" placeholder="Tu nombre">
+
+        <label>Correo electrónico</label>
+        <input type="email" id="correo" placeholder="ejemplo@correo.com">
+
+        <label>Contraseña</label>
+        <div class="password">
+            <input type="password" id="password" placeholder="********">
+        </div>
+
+        <div class="terms">
+            <input type="checkbox" id="terminos">
+            <p>Acepto los<a href="#">Términos y condiciones</a></p>
+        </div>
+
+        <a href="#" class="green-btn" id="btnCrear">Crear cuenta</a>
+        <p id="mensajeError" class="error-message"></p>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>
